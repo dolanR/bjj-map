@@ -1,29 +1,34 @@
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
+import getEvents from "@/getevents";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+
+mapboxgl.accessToken =
+  "pk.eyJ1IjoiZHVkZXk3ZnR3IiwiYSI6ImNsb3Fmc3dlbTA2bzcyaW1rZnd0MGZuMnoifQ.Tv9vopthxwZ6Rm2-T0PTIQ";
 
 const Home: FC = () => {
+  const mapContainer = useRef(null);
+  const map = useRef<mapboxgl.Map | null>(null);
+
+  useEffect(() => {
+    const data = getEvents();
+    data.then((res) => {
+      console.log(res);
+    });
+
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current!,
+      style: "mapbox://styles/dudey7ftw/clorjbiid00gs01qneji795zj",
+      center: [-79.0377, 43.0962],
+      zoom: 6,
+    });
+  }, []);
   return (
     <>
-      <section>
-        <div className="hero min-h-[calc(100vh-64px)] bg-base-200">
-          <div className="hero-content flex-col lg:flex-row">
-            <img
-              src="/images/hero.webp"
-              className="max-w-sm rounded-lg shadow-2xl"
-            />
-            <div>
-              <h1 className="text-5xl font-bold">Welcome</h1>
-              <p className="py-5">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
-                minima laboriosam maxime sed dignissimos harum provident itaque
-                fugiat. A repellat aliquid inventore dolor tempora, omnis
-                perferendis aspernatur quo nisi excepturi. Ex, ullam odio iusto
-                esse necessitatibus doloremque repudiandae!
-              </p>
-              <button className="btn-primary btn">Get Started</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div>
+        <div ref={mapContainer} className="h-[calc(100vh-168px)]" />
+      </div>
     </>
   );
 };
