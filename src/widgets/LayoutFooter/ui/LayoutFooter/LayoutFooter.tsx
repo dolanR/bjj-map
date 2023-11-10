@@ -6,8 +6,8 @@ import { Tooltip } from "react-tooltip";
 const LayoutFooter: FC = () => {
   return (
     <>
-      <footer className="absolute bottom-0 w-full bg-base-300 p-3 text-sm">
-        <div className="m-auto flex flex-col items-center justify-center gap-1">
+      <footer className="fixed bottom-0 w-full bg-base-300 p-3 text-sm">
+        <div className="m-auto flex flex-col items-center justify-center">
           <div className="flex flex-row items-center justify-center gap-4 pb-1">
             <a
               href="https://github.com/dolanR"
@@ -15,7 +15,7 @@ const LayoutFooter: FC = () => {
               data-tooltip-id="github"
               data-tooltip-content="My Github"
             >
-              <AiFillGithub className="h-7 w-7" />
+              <AiFillGithub className="h-4 w-4 md:h-7 md:w-7" />
               <Tooltip id="github" place="top" />
             </a>
             <a
@@ -24,14 +24,14 @@ const LayoutFooter: FC = () => {
               data-tooltip-id="website"
               data-tooltip-content="My Website"
             >
-              <BsPersonCircle className="h-7 w-7" />
+              <BsPersonCircle className="h-4 w-4 md:h-7 md:w-7" />
               <Tooltip id="website" place="top" />
             </a>
           </div>
-          <p>
+          <p className="text-[11px] md:text-base">
             © 2023 by Dolan Reynolds.<a></a>
           </p>
-          <p>All Rights Reserved.</p>
+          <p className="text-[11px] md:text-base">All Rights Reserved.</p>
         </div>
       </footer>
     </>

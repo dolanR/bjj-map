@@ -5,11 +5,12 @@ import Menu from "../Menu/Menu";
 const LayoutHeader: FC = () => {
   return (
     <>
-      <header>
+      <header className="sticky z-10">
         <nav className="navbar bg-base-100">
           <Menu
             links={[
-              { name: "Homepage", href: "/" },
+              { name: "Map", href: "/" },
+              { name: "List", href: "/list" },
               { name: "About", href: "/about" },
             ]}
           />

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Menu: FC<Menu> = ({ links }: Menu) => {
   return (
     <>
-      <div className="navbar-start">
-        <div className="dropdown">
+      <div className="navbar-start z-50">
+        <div className="dropdown z-50">
           <label tabIndex={0} className="btn-ghost btn-circle btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,11 +25,23 @@ const Menu: FC<Menu> = ({ links }: Menu) => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box menu-sm z-50 mt-3 w-52 bg-base-100 p-2 shadow"
+            className="dropdown-content menu menu-md z-50 mt-4 w-44 rounded-xl bg-base-100 p-2 shadow sm:menu-lg sm:w-52"
           >
             {links.map((link) => (
               <li key={link.name}>
-                <Link to={link.href}>{link.name}</Link>
+                <Link
+                  onClick={() => {
+                    if (!window) return;
+                    if (!window.document.activeElement) return;
+                    if (document.activeElement instanceof HTMLElement) {
+                      document.activeElement.blur();
+                    }
+                  }}
+                  to={link.href}
+                  className="text-lg"
+                >
+                  {link.name}
+                </Link>
               </li>
             ))}
           </ul>

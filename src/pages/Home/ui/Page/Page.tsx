@@ -1,33 +1,121 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import getEvents from "@/getevents";
-import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import {
+  FullscreenControl,
+  GeolocateControl,
+  Map,
+  Marker,
+  NavigationControl,
+  Popup,
+  ScaleControl,
+} from "react-map-gl";
+import { Event } from "@/getevents";
+import Pin from "@/pin";
+import legend from "@/legend";
+import Legend from "@/legend";
 
-mapboxgl.accessToken =
+const accessToken =
   "pk.eyJ1IjoiZHVkZXk3ZnR3IiwiYSI6ImNsb3Fmc3dlbTA2bzcyaW1rZnd0MGZuMnoifQ.Tv9vopthxwZ6Rm2-T0PTIQ";
 
 const Home: FC = () => {
-  const mapContainer = useRef(null);
-  const map = useRef<mapboxgl.Map | null>(null);
+  const [eventData, setEventData] = useState<Event[]>([]);
+  const [popupInfo, setPopupInfo] = useState<Event | null>(null);
 
   useEffect(() => {
-    const data = getEvents();
-    data.then((res) => {
-      console.log(res);
-    });
-
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current!,
-      style: "mapbox://styles/dudey7ftw/clorjbiid00gs01qneji795zj",
-      center: [-79.0377, 43.0962],
-      zoom: 6,
+    async function fetchData(): Promise<Event[]> {
+      return await getEvents();
+    }
+    fetchData().then((res) => {
+      setEventData(res);
     });
   }, []);
+
+  const pins = useMemo(
+    () =>
+      eventData.map((event, index) => {
+        const date = new Date();
+        if (new Date(event.exactDate) < date) return null;
+        return (
+          <Marker
+            key={`marker-${index}`}
+            longitude={event.longitude}
+            latitude={event.latitude}
+            anchor="top"
+            onClick={(e) => {
+              // If we let the click event propagates to the map, it will immediately close the popup
+              // with `closeOnClick: true`
+              e.originalEvent.stopPropagation();
+              if (popupInfo && popupInfo.id === event.id) {
+                setPopupInfo(null);
+              } else {
+                setPopupInfo(event);
+              }
+            }}
+          >
+            <Pin
+              color={
+                event.link.includes("ibjjf")
+                  ? { color1: "#404ce7", color2: "#dabe34" }
+                  : { color1: "#e77b40", color2: "#f4f2f0" }
+              }
+            />
+          </Marker>
+        );
+      }),
+    [eventData, popupInfo],
+  );
   return (
     <>
-      <div>
-        <div ref={mapContainer} className="h-[calc(100vh-168px)]" />
+      <div className="h-[calc(100vh-148px)] w-screen md:h-[calc(100vh-168px)]">
+        <Map
+          reuseMaps
+          mapboxAccessToken={accessToken}
+          initialViewState={{
+            longitude: -79.0377,
+            latitude: 43.0962,
+            zoom: 6,
+          }}
+          style={{ width: "100%", height: "100%" }}
+          mapStyle="mapbox://styles/dudey7ftw/clorn7lll00hx01ntcfsn0b1g"
+          projection={{ name: "globe" }}
+        >
+          <GeolocateControl position="top-left" />
+          <FullscreenControl position="top-left" />
+          <NavigationControl position="top-left" />
+          <ScaleControl />
+          {pins}
+          {popupInfo && (
+            <Popup
+              anchor="bottom"
+              longitude={Number(popupInfo.longitude)}
+              latitude={Number(popupInfo.latitude)}
+              onClose={() => setPopupInfo(null)}
+              style={{ maxWidth: "300px" }}
+            >
+              <div className="flex flex-col items-center justify-center gap-2 p-2 text-center text-neutral-600">
+                <p className=" text-sm font-semibold">{popupInfo.title}</p>
+                <p>{popupInfo.location}</p>
+                <p>
+                  {new Date(popupInfo.exactDate).toLocaleDateString(undefined, {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+                <a
+                  target="_new"
+                  href={popupInfo.link}
+                  className="text-blue-500 underline"
+                >
+                  Visit Event Page
+                </a>
+              </div>
+            </Popup>
+          )}
+          <Legend />
+        </Map>
       </div>
     </>
   );

@@ -5,3 +5,23 @@
 .mapbox-improve-map {
   display: none;
 }
+
+.mapboxgl-popup-close-button {
+  width: 20px;
+  height: 20px;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background-color: #d8d8d8;
+}
+
+.mapboxgl-popup-content {
+  padding: 12px;
+}
+
+.mapboxgl-map {
+  z-index: 5;
+}
+.mapboxgl-map > * {
+  z-index: 5;
+}
