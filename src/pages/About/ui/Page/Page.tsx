@@ -7,8 +7,8 @@ const About: FC = () => {
         <div className="flex min-h-[calc(100vh-148px)] w-screen flex-col items-center justify-center bg-base-200 sm:min-h-[calc(100vh-148px)] md:min-h-[calc(100vh-168px)]">
           <div className="mb-20 flex max-w-[950px] flex-col gap-8 p-4 sm:p-12">
             <h1 className="text-3xl">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This website was the goal I had in
-              mind when I first began teaching myself to code around April, 2023
+              &nbsp;&nbsp;&nbsp;This website was the goal I had in mind when I
+              first began teaching myself to code around April, 2023
             </h1>
             <p>
               I wanted a simple map that had markers and popups for all the
