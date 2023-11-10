@@ -17,7 +17,7 @@ const List: FC = () => {
   return (
     <>
       <section>
-        <div className="hero flex min-h-[calc(100vh-64px)] flex-col bg-base-200">
+        <div className="hero flex min-h-[calc(100dvh-64px)] flex-col bg-base-200">
           <input
             className="input-bordered input mt-4 w-80"
             type="text"
