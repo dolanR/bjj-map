@@ -5,11 +5,11 @@ import { Outlet } from "react-router-dom";
 const Layout: FC = () => {
   return (
     <div className="h-screen overflow-x-hidden">
-      <LayoutHeader />
       <main>
+        <LayoutHeader />
         <Outlet />
+        <LayoutFooter />
       </main>
-      <LayoutFooter />
     </div>
   );
 };

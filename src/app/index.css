@@ -25,3 +25,8 @@
 .mapboxgl-map > * {
   z-index: 5;
 }
+
+html,
+body {
+  overflow: auto;
+}
