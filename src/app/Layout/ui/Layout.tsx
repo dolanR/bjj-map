@@ -4,12 +4,12 @@ import { Outlet } from "react-router-dom";
 
 const Layout: FC = () => {
   return (
-    <div className="h-screen overflow-x-hidden">
+    <div className="overflow-x-hidden overscroll-none">
+      <LayoutHeader />
       <main className="overscroll-none">
-        <LayoutHeader />
         <Outlet />
-        <LayoutFooter />
       </main>
+      <LayoutFooter />
     </div>
   );
 };
