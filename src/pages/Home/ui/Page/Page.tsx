@@ -3,7 +3,6 @@ import getEvents from "@/getevents";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {
   FullscreenControl,
-  GeolocateControl,
   Map,
   Marker,
   NavigationControl,
@@ -79,7 +78,6 @@ const Home: FC = () => {
           mapStyle="mapbox://styles/dudey7ftw/clorn7lll00hx01ntcfsn0b1g"
           projection={{ name: "globe" }}
         >
-          <GeolocateControl position="top-left" />
           <FullscreenControl position="top-left" />
           <NavigationControl position="top-left" />
           <ScaleControl />
