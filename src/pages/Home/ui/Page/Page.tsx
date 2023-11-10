@@ -12,7 +12,6 @@ import {
 } from "react-map-gl";
 import { Event } from "@/getevents";
 import Pin from "@/pin";
-import legend from "@/legend";
 import Legend from "@/legend";
 
 const accessToken =
