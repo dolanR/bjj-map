@@ -26,12 +26,15 @@ const List: FC = () => {
               setMatchChar(e.target.value);
             }}
           />
-          <div className="mx-4 mb-28 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mx-4 mb-28 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eventData.map((event, index) => {
               const date = new Date();
               if (new Date(event.exactDate) < date) return null;
               if (
                 event.title.toLowerCase().includes(matchChar.toLowerCase()) ||
+                event.location
+                  .toLowerCase()
+                  .includes(matchChar.toLowerCase()) ||
                 event.location
                   .toLowerCase()
                   .includes(matchChar.toLowerCase()) ||
@@ -76,7 +79,7 @@ const List: FC = () => {
                       </p>
                       <a
                         href={event.link}
-                        className={`btn btn-sm m-auto min-w-[175px] max-w-[50%] font-bold ${
+                        className={`btn btn-sm mx-auto mt-3 min-w-[175px] max-w-[50%] font-bold ${
                           event.title.includes("IBJJF")
                             ? "bg-blue-800 text-yellow-300 hover:bg-blue-700"
                             : event.title.includes("AJP")

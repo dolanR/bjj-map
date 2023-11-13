@@ -28,7 +28,6 @@ const Home: FC = () => {
       setEventData(res);
     });
   }, []);
-
   const pins = useMemo(
     () =>
       eventData.map((event, index) => {

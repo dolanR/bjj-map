@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function Legend() {
+const Legend = () => {
   return (
     <div className="absolute right-2 top-2 z-10 rounded-md bg-neutral-200 p-1.5 text-neutral-700 md:p-3">
       <div className="flex flex-col gap-2">
@@ -27,6 +27,6 @@ function Legend() {
       </div>
     </div>
   );
-}
+};
 
 export default React.memo(Legend);
