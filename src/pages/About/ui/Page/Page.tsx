@@ -31,9 +31,10 @@ const About: FC = () => {
               this website.
             </p>
             <p>
-              Things I'm likely going to add: more events (AJP specifically),
-              event filters for the map, and login/user authentication with some
-              sort of favorited events section.
+              Things I'm likely going to add: more events, event filters for the
+              map, login/user authentication with some sort of favorited events
+              section, and a way to visually clarify events with similar
+              latitude/longitudes.
             </p>
             <p>
               Update November 13th, 2023: AJP Events have been added to the
