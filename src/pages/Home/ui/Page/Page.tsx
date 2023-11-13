@@ -55,7 +55,9 @@ const Home: FC = () => {
               color={
                 event.link.includes("ibjjf")
                   ? { color1: "#404ce7", color2: "#dabe34" }
-                  : { color1: "#e77b40", color2: "#f4f2f0" }
+                  : event.link.includes("ajp")
+                  ? { color1: "#141a29", color2: "#641d85" }
+                  : { color1: "#f59b42", color2: "#dabe34" }
               }
             />
           </Marker>

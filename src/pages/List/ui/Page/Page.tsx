@@ -19,9 +19,9 @@ const List: FC = () => {
       <section>
         <div className="hero flex min-h-[calc(100dvh-64px)] flex-col bg-base-200">
           <input
-            className="input-bordered input mt-4 w-80"
+            className="input input-bordered mt-4 w-80"
             type="text"
-            placeholder="Search...    (e.g. IBJJF, March 2024, etc.)"
+            placeholder="Search...   e.g. IBJJF, March 2024, etc."
             onChange={(e) => {
               setMatchChar(e.target.value);
             }}
@@ -56,7 +56,7 @@ const List: FC = () => {
                 return (
                   <div
                     key={`marker-${index}`}
-                    className="bordered card shadow-lg"
+                    className="card bordered shadow-lg"
                   >
                     <div className="card-body text-sm md:text-base xl:text-lg">
                       <h2 className="card-title text-base md:text-xl xl:text-2xl">
@@ -76,10 +76,12 @@ const List: FC = () => {
                       </p>
                       <a
                         href={event.link}
-                        className={`btn-sm btn m-auto min-w-[175px] max-w-[50%] font-bold ${
+                        className={`btn btn-sm m-auto min-w-[175px] max-w-[50%] font-bold ${
                           event.title.includes("IBJJF")
-                            ? "bg-blue-800 text-yellow-300 hover:bg-blue-900"
-                            : "bg-orange-400 text-black hover:bg-orange-500"
+                            ? "bg-blue-800 text-yellow-300 hover:bg-blue-700"
+                            : event.title.includes("AJP")
+                            ? "bg-indigo-950 text-purple-600 hover:bg-indigo-900"
+                            : "bg-orange-400 text-black hover:bg-orange-300"
                         }`}
                         target="_blank"
                         rel="noreferrer"

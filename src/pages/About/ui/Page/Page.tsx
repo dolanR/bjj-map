@@ -11,12 +11,14 @@ const About: FC = () => {
               first began teaching myself to code around April, 2023
             </h1>
             <p>
-              I wanted a simple map that had markers and popups for all the
-              Jiu-Jitsu competitions I was interested in doing. Currently, IBJJF
-              and Grappling Industries competitions are listed on their own
-              individual websites, and there was no easy way to filter them both
-              using one website. This website aims to solve that problem, not
-              only for myself, but for anyone else who is too lazy to go to both
+              And as of November 10, 2023, it was fully functional and mobile
+              responsive! I wanted a simple map that had markers and popups for
+              all the Jiu-Jitsu competitions I was interested in doing.
+              Currently, IBJJF and Grappling Industries competitions are listed
+              on their own individual websites, as well as some other event
+              organizations, and there was no easy way to filter them all using
+              one website. This website aims to solve that problem, not only for
+              myself, but for anyone else who is too lazy to go to each org's
               websites to find events.
             </p>
             <p>
@@ -32,6 +34,10 @@ const About: FC = () => {
               Things I'm likely going to add: more events (AJP specifically),
               event filters for the map, and login/user authentication with some
               sort of favorited events section.
+            </p>
+            <p>
+              Update November 13th, 2023: AJP Events have been added to the
+              database, map, and list.
             </p>
           </div>
         </div>
