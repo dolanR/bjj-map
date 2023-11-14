@@ -19,6 +19,10 @@ const accessToken =
 const Home: FC = () => {
   const [eventData, setEventData] = useState<Event[]>([]);
   const [popupInfo, setPopupInfo] = useState<Event | null>(null);
+  const [AJP, setAJP] = useState(true);
+  const [GI, setGI] = useState(true);
+  const [IBJJF, setIBJJF] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData(): Promise<Event[]> {
@@ -28,9 +32,24 @@ const Home: FC = () => {
       setEventData(res);
     });
   }, []);
+  const [filteredEvents, setFilteredEvents] = useState<Event[]>([...eventData]);
+  useEffect(() => {
+    setFilteredEvents(
+      eventData.filter((event) => {
+        if (event.link.includes("ibjjf")) {
+          return IBJJF;
+        } else if (event.link.includes("ajp")) {
+          return AJP;
+        } else {
+          return GI;
+        }
+      }),
+    );
+  }, [eventData, AJP, GI, IBJJF, filteredEvents]);
+
   const pins = useMemo(
     () =>
-      eventData.map((event, index) => {
+      filteredEvents.map((event, index) => {
         const date = new Date();
         if (new Date(event.exactDate) < date) return null;
         return (
@@ -62,7 +81,7 @@ const Home: FC = () => {
           </Marker>
         );
       }),
-    [eventData, popupInfo],
+    [filteredEvents, popupInfo],
   );
   return (
     <>
@@ -112,7 +131,21 @@ const Home: FC = () => {
               </div>
             </Popup>
           )}
-          <Legend />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="mapboxgl-ctrl-group absolute right-[10px] top-[10px] z-10 h-[29px] px-2 text-black"
+          >
+            {isOpen ? "Close" : "Open Legend/Filtering"}
+          </button>
+          <Legend
+            AJP={AJP}
+            GI={GI}
+            IBJJF={IBJJF}
+            setAJP={setAJP}
+            setGI={setGI}
+            setIBJJF={setIBJJF}
+            isOpen={isOpen}
+          />
         </Map>
       </div>
     </>
