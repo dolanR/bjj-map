@@ -22,6 +22,7 @@ const Home: FC = () => {
   const [AJP, setAJP] = useState(true);
   const [GI, setGI] = useState(true);
   const [IBJJF, setIBJJF] = useState(true);
+  const [noGi, setNoGi] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -36,12 +37,26 @@ const Home: FC = () => {
   useEffect(() => {
     setFilteredEvents(
       eventData.filter((event) => {
-        if (event.link.includes("ibjjf")) {
-          return IBJJF;
-        } else if (event.link.includes("ajp")) {
-          return AJP;
+        if (noGi === true) {
+          if (event.link.includes("ibjjf")) {
+            return IBJJF;
+          } else if (event.link.includes("ajp")) {
+            return AJP;
+          } else {
+            return GI;
+          }
         } else {
-          return GI;
+          if (event.title.includes("No-Gi")) {
+            return noGi;
+          } else if (event.title.includes("NO-GI")) {
+            return noGi;
+          } else if (event.link.includes("ibjjf")) {
+            return IBJJF;
+          } else if (event.link.includes("ajp")) {
+            return AJP;
+          } else {
+            return GI;
+          }
         }
       }),
     );
@@ -141,9 +156,11 @@ const Home: FC = () => {
             AJP={AJP}
             GI={GI}
             IBJJF={IBJJF}
+            noGi={noGi}
             setAJP={setAJP}
             setGI={setGI}
             setIBJJF={setIBJJF}
+            setNoGi={setNoGi}
             isOpen={isOpen}
           />
         </Map>
