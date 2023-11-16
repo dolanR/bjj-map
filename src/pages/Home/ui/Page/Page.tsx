@@ -19,10 +19,11 @@ const accessToken =
 const Home: FC = () => {
   const [eventData, setEventData] = useState<Event[]>([]);
   const [popupInfo, setPopupInfo] = useState<Event | null>(null);
+  const [noGi, setNoGi] = useState(false);
+  const [onlyGi, setOnlyGi] = useState(false);
   const [AJP, setAJP] = useState(true);
   const [GI, setGI] = useState(true);
   const [IBJJF, setIBJJF] = useState(true);
-  const [noGi, setNoGi] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -38,19 +39,33 @@ const Home: FC = () => {
     setFilteredEvents(
       eventData.filter((event) => {
         if (noGi === true) {
-          if (event.link.includes("ibjjf")) {
+          if (event.link.includes("ibjjf") && event.title.includes("No-Gi")) {
             return IBJJF;
-          } else if (event.link.includes("ajp")) {
+          } else if (
+            event.link.includes("ajp") &&
+            event.title.includes("NO-GI")
+          ) {
             return AJP;
-          } else {
+          } else if (event.title.includes("GRAPPLING INDUSTRIES")) {
             return GI;
+          } else {
+            return false;
+          }
+        } else if (onlyGi === true) {
+          if (event.link.includes("ibjjf") && !event.title.includes("No-Gi")) {
+            return IBJJF;
+          } else if (
+            event.link.includes("ajp") &&
+            !event.title.includes("NO-GI")
+          ) {
+            return AJP;
+          } else if (event.title.includes("GRAPPLING INDUSTRIES")) {
+            return GI;
+          } else {
+            return false;
           }
         } else {
-          if (event.title.includes("No-Gi")) {
-            return noGi;
-          } else if (event.title.includes("NO-GI")) {
-            return noGi;
-          } else if (event.link.includes("ibjjf")) {
+          if (event.link.includes("ibjjf")) {
             return IBJJF;
           } else if (event.link.includes("ajp")) {
             return AJP;
@@ -153,14 +168,16 @@ const Home: FC = () => {
             {isOpen ? "Close" : "Open Legend/Filtering"}
           </button>
           <Legend
+            noGi={noGi}
+            onlyGi={onlyGi}
             AJP={AJP}
             GI={GI}
             IBJJF={IBJJF}
-            noGi={noGi}
+            setNoGi={setNoGi}
+            setOnlyGi={setOnlyGi}
             setAJP={setAJP}
             setGI={setGI}
             setIBJJF={setIBJJF}
-            setNoGi={setNoGi}
             isOpen={isOpen}
           />
         </Map>
