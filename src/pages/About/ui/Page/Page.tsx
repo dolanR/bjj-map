@@ -38,7 +38,12 @@ const About: FC = () => {
             </p>
             <p>
               Update November 13th, 2023: AJP Events have been added to the
-              database, map, and list.
+              database/map/list and added filters to the map legend.
+            </p>
+            <p>
+              Update November 16th, 2023: NAGA and ADCC Events have been added
+              to the database/map/list and added Only Gi and Only No-Gi filters
+              to the map legend.
             </p>
           </div>
         </div>

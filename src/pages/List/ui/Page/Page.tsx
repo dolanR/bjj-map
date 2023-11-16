@@ -81,10 +81,14 @@ const List: FC = () => {
                         href={event.link}
                         className={`btn btn-sm mx-auto mt-3 min-w-[175px] max-w-[50%] font-bold ${
                           event.title.includes("IBJJF")
-                            ? "bg-blue-800 text-yellow-300 hover:bg-blue-700"
+                            ? "bg-blue-800 text-white hover:bg-blue-700"
                             : event.title.includes("AJP")
-                            ? "bg-indigo-950 text-purple-600 hover:bg-indigo-900"
-                            : "bg-orange-400 text-black hover:bg-orange-300"
+                            ? "bg-indigo-950 text-white hover:bg-indigo-900"
+                            : event.title.includes("ADCC")
+                            ? "bg-red-700 text-white hover:bg-red-400"
+                            : event.link.includes("naga")
+                            ? "bg-rose-950 text-white hover:bg-rose-900"
+                            : "bg-orange-500 text-white hover:bg-orange-300"
                         }`}
                         target="_blank"
                         rel="noreferrer"

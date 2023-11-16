@@ -24,6 +24,8 @@ const Home: FC = () => {
   const [AJP, setAJP] = useState(true);
   const [GI, setGI] = useState(true);
   const [IBJJF, setIBJJF] = useState(true);
+  const [NAGA, setNAGA] = useState(true);
+  const [ADCC, setADCC] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -48,6 +50,10 @@ const Home: FC = () => {
             return AJP;
           } else if (event.title.includes("GRAPPLING INDUSTRIES")) {
             return GI;
+          } else if (event.link.includes("naga")) {
+            return NAGA;
+          } else if (event.title.includes("ADCC")) {
+            return ADCC;
           } else {
             return false;
           }
@@ -61,6 +67,10 @@ const Home: FC = () => {
             return AJP;
           } else if (event.title.includes("GRAPPLING INDUSTRIES")) {
             return GI;
+          } else if (event.link.includes("naga")) {
+            return NAGA;
+          } else if (event.title.includes("ADCC")) {
+            return false;
           } else {
             return false;
           }
@@ -69,6 +79,10 @@ const Home: FC = () => {
             return IBJJF;
           } else if (event.link.includes("ajp")) {
             return AJP;
+          } else if (event.link.includes("naga")) {
+            return NAGA;
+          } else if (event.title.includes("ADCC")) {
+            return ADCC;
           } else {
             return GI;
           }
@@ -105,6 +119,10 @@ const Home: FC = () => {
                   ? { color1: "#404ce7", color2: "#dabe34" }
                   : event.link.includes("ajp")
                   ? { color1: "#141a29", color2: "#641d85" }
+                  : event.link.includes("naga")
+                  ? { color1: "#330505", color2: "#121111" }
+                  : event.title.includes("ADCC")
+                  ? { color1: "#bf2828", color2: "#b87b7b" }
                   : { color1: "#f59b42", color2: "#dabe34" }
               }
             />
@@ -173,11 +191,15 @@ const Home: FC = () => {
             AJP={AJP}
             GI={GI}
             IBJJF={IBJJF}
+            NAGA={NAGA}
+            ADCC={ADCC}
             setNoGi={setNoGi}
             setOnlyGi={setOnlyGi}
             setAJP={setAJP}
             setGI={setGI}
             setIBJJF={setIBJJF}
+            setNAGA={setNAGA}
+            setADCC={setADCC}
             isOpen={isOpen}
           />
         </Map>
