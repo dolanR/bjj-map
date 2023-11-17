@@ -89,7 +89,7 @@ const Home: FC = () => {
         }
       }),
     );
-  }, [eventData, AJP, GI, IBJJF, filteredEvents]);
+  }, [AJP, GI, IBJJF, NAGA, ADCC, noGi, onlyGi, eventData]);
 
   const pins = useMemo(
     () =>
