@@ -4,7 +4,7 @@ const About: FC = () => {
   return (
     <>
       <section>
-        <div className="flex min-h-[calc(100dvh-148px)] w-screen flex-col items-center justify-center bg-base-200 sm:min-h-[calc(100dvh-148px)] md:min-h-[calc(100dvh-168px)]">
+        <div className="flex min-h-[calc(100dvh-148px)] w-screen flex-col items-center justify-center bg-base-200 lg:min-h-[calc(100dvh-168px)]">
           <div className="mb-20 flex max-w-[950px] flex-col gap-8 p-4 sm:p-12">
             <h1 className="text-3xl">
               &nbsp;&nbsp;&nbsp;This website was the goal I had in mind when I

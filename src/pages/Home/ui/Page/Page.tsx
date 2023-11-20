@@ -133,7 +133,7 @@ const Home: FC = () => {
   );
   return (
     <>
-      <div className="h-[calc(100svh-148px)] w-screen overscroll-none md:h-[calc(100svh-168px)]">
+      <div className="h-[calc(100svh-148px)] w-screen overscroll-none lg:h-[calc(100svh-168px)]">
         <Map
           reuseMaps
           mapboxAccessToken={accessToken}

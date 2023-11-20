@@ -9,16 +9,16 @@ const LayoutFooter: FC = () => {
         <div className="m-auto flex flex-col items-center justify-center">
           <div className="flex flex-row items-center justify-center gap-4 pb-1">
             <a href="https://github.com/dolanR" target="_blank">
-              <AiFillGithub className="h-4 w-4 md:h-7 md:w-7" />
+              <AiFillGithub className="h-4 w-4 lg:h-7 lg:w-7" />
             </a>
             <a href="https://dolan.dev" target="_blank">
-              <BsPersonCircle className="h-4 w-4 md:h-7 md:w-7" />
+              <BsPersonCircle className="h-4 w-4 lg:h-7 lg:w-7" />
             </a>
           </div>
-          <p className="text-[11px] md:text-base">
+          <p className="text-[11px] lg:text-base">
             © 2023 by Dolan Reynolds.<a></a>
           </p>
-          <p className="text-[11px] md:text-base">All Rights Reserved.</p>
+          <p className="text-[11px] lg:text-base">All Rights Reserved.</p>
         </div>
       </footer>
     </>

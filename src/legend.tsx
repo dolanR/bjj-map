@@ -38,7 +38,7 @@ const Legend = ({
   return (
     isOpen && (
       <div className="absolute right-[10px] top-[49px] z-10 rounded-md bg-neutral-200 p-1.5 text-neutral-700 md:p-3">
-        <div className="flex flex-col gap-[2px] md:gap-2">
+        <div className="flex flex-col gap-[2px] md:gap-1">
           <div className="flex items-center justify-center gap-2">
             <p className="text-[11px] font-semibold md:text-sm">Only Gi</p>
             <input
@@ -114,12 +114,12 @@ const Legend = ({
               onChange={() => setNAGA(!NAGA)}
             />
           </div>
-          <p className="spacing mx-auto max-w-[200px] text-[11px] leading-tight md:text-sm">
+          <p className="spacing mx-auto max-w-[200px] text-[11px] leading-tight 2xl:text-sm">
             The map becomes quite laggy after having so many events on. To
             reduce the lag, try turning off some of the event filters or
             filtering by gi/no-gi.
           </p>
-          <p className="mx-auto max-w-[200px] text-[11px] leading-tight text-neutral-400 md:text-sm">
+          <p className="mx-auto max-w-[200px] text-[11px] leading-tight text-neutral-400 2xl:text-sm">
             *Not all events are on the map because some had no coordinates on
             their webpage, so I banished them to Antarctica. However, the list
             page of this website contains all events*
