@@ -1,15 +1,7 @@
 import { FC } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Layout } from "@/app/Layout";
 import { Home, NoMatch, About, List } from "@/pages";
-import {
-  ClerkProvider,
-  RedirectToSignIn,
-  SignIn,
-  SignUp,
-  SignedIn,
-  SignedOut,
-} from "@clerk/clerk-react";
 
 // if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
 //   throw new Error("Missing Publishable Key");
