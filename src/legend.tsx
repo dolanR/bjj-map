@@ -114,11 +114,7 @@ const Legend = ({
               onChange={() => setNAGA(!NAGA)}
             />
           </div>
-          <p className="spacing mx-auto max-w-[200px] text-[11px] leading-tight 2xl:text-sm">
-            The map becomes quite laggy after having so many events on. To
-            reduce the lag, try turning off some of the event filters or
-            filtering by gi/no-gi.
-          </p>
+
           <p className="mx-auto max-w-[200px] text-[11px] leading-tight text-neutral-400 2xl:text-sm">
             *Not all events are on the map because some had no coordinates on
             their webpage, so I banished them to Antarctica. However, the list
