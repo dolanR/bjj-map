@@ -192,6 +192,7 @@ const List: FC = () => {
                           <button
                             className="flex items-center justify-center text-xl"
                             title={
+                              userSavedEvents &&
                               userSavedEvents.some(
                                 (object: SavedEvent) =>
                                   object.title === event.title,
@@ -201,7 +202,8 @@ const List: FC = () => {
                             }
                             onClick={() => clickHandler(event)}
                           >
-                            {userSavedEvents.some(
+                            {userSavedEvents &&
+                            userSavedEvents.some(
                               (object: SavedEvent) =>
                                 object.title === event.title,
                             ) ? (

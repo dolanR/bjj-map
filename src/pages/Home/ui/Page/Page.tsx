@@ -288,6 +288,7 @@ const Home: FC = () => {
                     <button
                       className="flex items-center justify-center text-xl"
                       title={
+                        userSavedEvents &&
                         userSavedEvents.some(
                           (object: SavedEvent) =>
                             object.title === popupInfo.title,
@@ -297,7 +298,8 @@ const Home: FC = () => {
                       }
                       onClick={() => clickHandler(popupInfo)}
                     >
-                      {userSavedEvents.some(
+                      {userSavedEvents &&
+                      userSavedEvents.some(
                         (object: SavedEvent) =>
                           object.title === popupInfo.title,
                       ) ? (

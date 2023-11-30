@@ -152,6 +152,7 @@ const MyEvents: FC = () => {
                         <button
                           className="flex items-center justify-center text-xl"
                           title={
+                            userSavedEvents &&
                             userSavedEvents.some(
                               (object: SavedEvent) =>
                                 object.title === event.title,
@@ -164,7 +165,8 @@ const MyEvents: FC = () => {
                             modalRef.current?.showModal();
                           }}
                         >
-                          {userSavedEvents.some(
+                          {userSavedEvents &&
+                          userSavedEvents.some(
                             (object: SavedEvent) =>
                               object.title === event.title,
                           ) ? (
