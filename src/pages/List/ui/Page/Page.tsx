@@ -44,6 +44,7 @@ const List: FC = () => {
     if (isLikeLoading) return;
     setIsLikeLoading(true);
     if (
+      userSavedEvents &&
       userSavedEvents.some((object: SavedEvent) => object.title === event.title)
     ) {
       fetch("https://worker-turso-ts.reynoldsdolan.workers.dev/remove_event", {
