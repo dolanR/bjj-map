@@ -29,7 +29,6 @@ const MyEvents: FC = () => {
         .then((res) => res.json())
         .catch((err) => console.log(err))
         .then((res) => {
-          console.log(res);
           return res as SavedEvent[];
         });
     }
@@ -38,7 +37,6 @@ const MyEvents: FC = () => {
     });
   }, [user]);
   function clickHandler(event: Event) {
-    console.log("clicked");
     if (!user?.id) return;
     if (isLikeLoading) return;
     setIsLikeLoading(true);
@@ -57,8 +55,7 @@ const MyEvents: FC = () => {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
-          console.log("delete", json);
+        .then(() => {
           setUserSavedEvents(
             userSavedEvents.filter(
               (object: SavedEvent) => object.title !== event.title,

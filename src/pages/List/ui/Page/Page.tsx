@@ -30,7 +30,6 @@ const List: FC = () => {
         .then((res) => res.json())
         .catch((err) => console.log(err))
         .then((res) => {
-          console.log(res);
           return res as SavedEvent[];
         });
     }
@@ -39,7 +38,6 @@ const List: FC = () => {
     });
   }, [user]);
   function clickHandler(event: Event) {
-    console.log("clicked");
     if (!user?.id) return;
     if (isLikeLoading) return;
     setIsLikeLoading(true);
@@ -59,7 +57,6 @@ const List: FC = () => {
       })
         .then((response) => response.json())
         .then((json) => {
-          console.log("delete", json);
           setUserSavedEvents(
             userSavedEvents.filter(
               (object: SavedEvent) => object.title !== event.title,
@@ -83,7 +80,6 @@ const List: FC = () => {
       })
         .then((response) => response.json())
         .then((json) => {
-          console.log("fetch", json);
           setUserSavedEvents([
             ...userSavedEvents,
             {

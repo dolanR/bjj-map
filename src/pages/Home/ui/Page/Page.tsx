@@ -42,13 +42,10 @@ const Home: FC = () => {
   const { user } = useUser();
 
   //console log user saved events
-  useEffect(() => {
-    console.log("user's saved events", userSavedEvents);
-  }, [userSavedEvents]);
+  useEffect(() => {}, [userSavedEvents]);
 
   //function to make post request on click of star button
   function clickHandler(event: Event) {
-    console.log("clicked");
     if (!user?.id) return;
     if (isLikeLoading) return;
     setIsLikeLoading(true);
@@ -67,8 +64,7 @@ const Home: FC = () => {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
-          console.log("delete", json);
+        .then(() => {
           setUserSavedEvents(
             userSavedEvents.filter(
               (object: SavedEvent) => object.title !== event.title,
@@ -91,8 +87,7 @@ const Home: FC = () => {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
-          console.log("fetch", json);
+        .then(() => {
           setUserSavedEvents([
             ...userSavedEvents,
             {
@@ -126,7 +121,6 @@ const Home: FC = () => {
         .then((res) => res.json())
         .catch((err) => console.log(err))
         .then((res) => {
-          console.log(res);
           return res as SavedEvent[];
         });
     }
