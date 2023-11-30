@@ -56,7 +56,7 @@ const List: FC = () => {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
+        .then(() => {
           setUserSavedEvents(
             userSavedEvents.filter(
               (object: SavedEvent) => object.title !== event.title,
@@ -79,7 +79,7 @@ const List: FC = () => {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
+        .then(() => {
           setUserSavedEvents([
             ...userSavedEvents,
             {
