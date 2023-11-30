@@ -15,6 +15,7 @@ A working demo is accessible at [bjj.dolan.dev](https://bjj.dolan.dev/)
 - Turso (SQLite) Database
 - Cloudflare Worker (For API endpoint)
 - Mapbox GL JS
+- Clerk User Auth
 
 ## Getting Started
 
