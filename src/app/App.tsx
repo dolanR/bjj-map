@@ -10,12 +10,19 @@ import {
 } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 
+let pubKey = process.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!pubKey) {
+  throw new Error(
+    "VITE_CLERK_PUBLISHABLE_KEY must be defined in .env file in the root of the project",
+  );
+}
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
 
   return (
     <ClerkProvider
-      publishableKey={process.env.VITE_CLERK_PUBLISHABLE_KEY!}
+      publishableKey={pubKey!}
       navigate={(to) => navigate(to)}
       appearance={{
         baseTheme: dark,
