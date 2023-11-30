@@ -10,7 +10,7 @@ import {
 } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 
-let pubKey = process.env.VITE_CLERK_PUBLISHABLE_KEY;
+let pubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!pubKey) {
   throw new Error(
