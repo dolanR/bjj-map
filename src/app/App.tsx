@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Layout } from "@/app/Layout";
-import { Home, NoMatch, About, List, MyEvents, SignInPage } from "@/pages";
+import { Home, NoMatch, About, List, SignInPage, MyEvents } from "@/pages";
 import {
   ClerkProvider,
   RedirectToSignIn,
