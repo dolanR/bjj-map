@@ -12,9 +12,19 @@ import {
 import { Event } from "@/getevents";
 import Pin from "@/pin";
 import Legend from "@/legend";
+import { SignedIn, useUser } from "@clerk/clerk-react";
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const accessToken =
   "pk.eyJ1IjoiZHVkZXk3ZnR3IiwiYSI6ImNsb3Fmc3dlbTA2bzcyaW1rZnd0MGZuMnoifQ.Tv9vopthxwZ6Rm2-T0PTIQ";
+
+export interface SavedEvent {
+  title: string;
+  date: string;
+  exactDate: Date;
+  location: string;
+  link: string;
+}
 
 const Home: FC = () => {
   const [eventData, setEventData] = useState<Event[]>([]);
@@ -27,6 +37,102 @@ const Home: FC = () => {
   const [NAGA, setNAGA] = useState(true);
   const [ADCC, setADCC] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLikeLoading, setIsLikeLoading] = useState(false);
+  const [userSavedEvents, setUserSavedEvents] = useState<SavedEvent[]>([]);
+  const { user } = useUser();
+
+  //console log user saved events
+  useEffect(() => {
+    console.log("user's saved events", userSavedEvents);
+  }, [userSavedEvents]);
+
+  //function to make post request on click of star button
+  function clickHandler(event: Event) {
+    console.log("clicked");
+    if (!user?.id) return;
+    if (isLikeLoading) return;
+    setIsLikeLoading(true);
+    if (
+      userSavedEvents.some((object: SavedEvent) => object.title === event.title)
+    ) {
+      fetch("https://worker-turso-ts.reynoldsdolan.workers.dev/remove_event", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: user?.id,
+          title: event.title,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log("delete", json);
+          setUserSavedEvents(
+            userSavedEvents.filter(
+              (object: SavedEvent) => object.title !== event.title,
+            ),
+          );
+        });
+    } else {
+      fetch("https://worker-turso-ts.reynoldsdolan.workers.dev/add_event", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: user?.id,
+          title: event.title,
+          link: event.link,
+          location: event.location,
+          exactDate: event.exactDate,
+          date: event.date,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log("fetch", json);
+          setUserSavedEvents([
+            ...userSavedEvents,
+            {
+              title: event.title,
+              link: event.link,
+              location: event.location,
+              exactDate: event.exactDate,
+              date: event.date,
+            },
+          ]);
+        });
+    }
+    setIsLikeLoading(false);
+  }
+
+  useEffect(() => {
+    if (!user?.id) return;
+    async function fetchData(): Promise<SavedEvent[]> {
+      return await fetch(
+        `https://worker-turso-ts.reynoldsdolan.workers.dev/saved_events`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            userId: user?.id,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        },
+      )
+        .then((res) => res.json())
+        .catch((err) => console.log(err))
+        .then((res) => {
+          console.log(res);
+          return res as SavedEvent[];
+        });
+    }
+    fetchData().then((res) => {
+      setUserSavedEvents(res);
+    });
+  }, [user]);
 
   useEffect(() => {
     async function fetchData(): Promise<Event[]> {
@@ -37,6 +143,7 @@ const Home: FC = () => {
     });
   }, []);
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([...eventData]);
+
   useEffect(() => {
     setFilteredEvents(
       eventData.filter((event) => {
@@ -169,13 +276,38 @@ const Home: FC = () => {
                     day: "numeric",
                   })}
                 </p>
-                <a
-                  target="_new"
-                  href={popupInfo.link}
-                  className="text-blue-500 underline"
-                >
-                  Visit Event Page
-                </a>
+                <div className="flex items-center justify-center gap-4">
+                  <a
+                    target="_new"
+                    href={popupInfo.link}
+                    className="text-blue-500 underline"
+                  >
+                    Visit Event Page
+                  </a>
+                  <SignedIn>
+                    <button
+                      className="flex items-center justify-center text-xl"
+                      title={
+                        userSavedEvents.some(
+                          (object: SavedEvent) =>
+                            object.title === popupInfo.title,
+                        )
+                          ? "Remove from my events"
+                          : "Add to my events"
+                      }
+                      onClick={() => clickHandler(popupInfo)}
+                    >
+                      {userSavedEvents.some(
+                        (object: SavedEvent) =>
+                          object.title === popupInfo.title,
+                      ) ? (
+                        <AiFillStar className="fill-yellow-500" />
+                      ) : (
+                        <AiOutlineStar />
+                      )}
+                    </button>
+                  </SignedIn>
+                </div>
               </div>
             </Popup>
           )}

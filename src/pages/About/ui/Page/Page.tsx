@@ -18,8 +18,8 @@ const About: FC = () => {
               on their own individual websites, as well as some other event
               organizations, and there was no easy way to filter them all using
               one website. This website aims to solve that problem, not only for
-              myself, but for anyone else who is too lazy to go to each org's
-              websites to find events.
+              myself, but for anyone else who is too lazy to go to each
+              organization's websites to find events.
             </p>
             <p>
               In summary, I built a web scraper using the JavaScript Puppeteer
@@ -44,6 +44,16 @@ const About: FC = () => {
               Update November 16th, 2023: NAGA and ADCC Events have been added
               to the database/map/list and added Only Gi and Only No-Gi filters
               to the map legend.
+            </p>
+            <p>
+              Update November 30th, 2023: I've added user authentication with
+              Clerk and its' webhooks to register user data into the
+              aforementioned turso database so each user can save events to
+              their respective My Events page. For now it's simply events that
+              can be picked out from the map or list, but I'm working on adding
+              a way to add custom events so people aren't limited to just the
+              events that the web scraper works on. Also updated the API
+              endpoint to accomodate all of the new requests.
             </p>
           </div>
         </div>

@@ -2,37 +2,73 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-
+    "jsx": "preserve",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
     /* Path */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "shared/*": ["src/shared/*"],
-      "entities/*": ["src/entities/*"],
-      "features/*": ["src/features/*"],
-      "widgets/*": ["src/widgets/*"],
-      "pages/*": ["src/pages/*"],
-      "processes/*": ["src/processes/*"],
-      "app/*": ["src/app/*"]
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "shared/*": [
+        "src/shared/*"
+      ],
+      "entities/*": [
+        "src/entities/*"
+      ],
+      "features/*": [
+        "src/features/*"
+      ],
+      "widgets/*": [
+        "src/widgets/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "processes/*": [
+        "src/processes/*"
+      ],
+      "app/*": [
+        "src/app/*"
+      ]
+    },
+    "allowJs": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["src", "types/vite-env.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src",
+    "types/vite-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
