@@ -10,17 +10,12 @@ import {
 } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 
-if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key");
-}
-const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
-
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
 
   return (
     <ClerkProvider
-      publishableKey={clerkPubKey}
+      publishableKey={process.env.VITE_CLERK_PUBLISHABLE_KEY!}
       navigate={(to) => navigate(to)}
       appearance={{
         baseTheme: dark,

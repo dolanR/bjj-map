@@ -11,7 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@clerk/clerk-react": "^4.28.0",
+    "@clerk/clerk-react": "^4.28.1",
     "@clerk/themes": "^1.7.9",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/mapbox-gl": "^2.7.18",

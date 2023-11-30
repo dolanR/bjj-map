@@ -28,7 +28,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@clerk/clerk-react@npm:^4.28.0":
+"@clerk/clerk-react@npm:^4.28.1":
   version: 4.28.1
   resolution: "@clerk/clerk-react@npm:4.28.1"
   dependencies:
@@ -3882,7 +3882,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "typescript-react-tailwind-vite@workspace:."
   dependencies:
-    "@clerk/clerk-react": "npm:^4.28.0"
+    "@clerk/clerk-react": "npm:^4.28.1"
     "@clerk/themes": "npm:^1.7.9"
     "@reduxjs/toolkit": "npm:^1.9.5"
     "@types/mapbox-gl": "npm:^2.7.18"
