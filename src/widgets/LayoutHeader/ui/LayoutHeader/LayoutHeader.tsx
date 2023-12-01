@@ -24,8 +24,8 @@ const LayoutHeader: FC = () => {
               </div>
             </SignedIn>
             <SignedOut>
-              <a className="btn btn-ghost rounded-btn btn-sm" href="/sign-in">
-                Sign in
+              <a className="btn btn-ghost rounded-btn btn-sm" href="/sign-up">
+                Sign up
               </a>
             </SignedOut>
           </div>
