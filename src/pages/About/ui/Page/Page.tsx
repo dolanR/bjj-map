@@ -55,6 +55,10 @@ const About: FC = () => {
               events that the web scraper works on. Also updated the API
               endpoint to accomodate all of the new requests.
             </p>
+            <p>
+              Update February 21st, 2024: More events!!! (American Grappling
+              Federation)
+            </p>
           </div>
         </div>
       </section>

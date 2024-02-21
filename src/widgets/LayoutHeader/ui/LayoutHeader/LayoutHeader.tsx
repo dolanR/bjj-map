@@ -12,8 +12,8 @@ const LayoutHeader: FC = () => {
             links={[
               { name: "Map", href: "/" },
               { name: "List", href: "/list" },
-              { name: "About", href: "/about" },
               { name: "My Events", href: "/MyEvents" },
+              { name: "About", href: "/about" },
             ]}
           />
           <Logo logoName={"BJJ Map"} />
