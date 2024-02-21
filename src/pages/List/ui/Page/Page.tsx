@@ -178,6 +178,10 @@ const List: FC = () => {
                               ? "bg-red-700 text-white hover:bg-red-400"
                               : event.link.includes("naga")
                               ? "bg-rose-950 text-white hover:bg-rose-900"
+                              : event.link.includes(
+                                  "americangrapplingfederation",
+                                )
+                              ? "bg-blue-400 text-white hover:bg-blue-200"
                               : "bg-orange-500 text-white hover:bg-orange-300"
                           }`}
                           target="_blank"

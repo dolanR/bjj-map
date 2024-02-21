@@ -8,6 +8,7 @@ type LegendProps = {
   IBJJF: boolean;
   NAGA: boolean;
   ADCC: boolean;
+  AGF: boolean;
   setNoGi: React.Dispatch<React.SetStateAction<boolean>>;
   setOnlyGi: React.Dispatch<React.SetStateAction<boolean>>;
   setAJP: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,6 +16,7 @@ type LegendProps = {
   setIBJJF: React.Dispatch<React.SetStateAction<boolean>>;
   setNAGA: React.Dispatch<React.SetStateAction<boolean>>;
   setADCC: React.Dispatch<React.SetStateAction<boolean>>;
+  setAGF: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
 };
 
@@ -26,6 +28,7 @@ const Legend = ({
   IBJJF,
   NAGA,
   ADCC,
+  AGF,
   setNoGi,
   setOnlyGi,
   setAJP,
@@ -33,6 +36,7 @@ const Legend = ({
   setIBJJF,
   setNAGA,
   setADCC,
+  setAGF,
   isOpen,
 }: LegendProps) => {
   return (
@@ -114,7 +118,17 @@ const Legend = ({
               onChange={() => setNAGA(!NAGA)}
             />
           </div>
-
+          <div className="flex items-center justify-center gap-2">
+            <div className="flex h-4 w-4 items-center justify-center rounded-full bg-red-600 md:h-6 md:w-6">
+              <div className="h-1.5 w-1.5 rounded-full bg-blue-500 md:h-2 md:w-2"></div>
+            </div>
+            <p className="text-[11px] font-semibold md:text-sm">AGF</p>
+            <input
+              type="checkbox"
+              checked={AGF}
+              onChange={() => setAGF(!AGF)}
+            />
+          </div>
           <p className="mx-auto max-w-[200px] text-[11px] leading-tight text-neutral-400 2xl:text-sm">
             *Not all events are on the map because some had no coordinates on
             their webpage, so I banished them to Antarctica. However, the list

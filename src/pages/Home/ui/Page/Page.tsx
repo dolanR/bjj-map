@@ -36,6 +36,7 @@ const Home: FC = () => {
   const [IBJJF, setIBJJF] = useState(true);
   const [NAGA, setNAGA] = useState(true);
   const [ADCC, setADCC] = useState(true);
+  const [AGF, setAGF] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isLikeLoading, setIsLikeLoading] = useState(false);
   const [userSavedEvents, setUserSavedEvents] = useState<SavedEvent[]>([]);
@@ -156,6 +157,8 @@ const Home: FC = () => {
             return NAGA;
           } else if (event.title.includes("ADCC")) {
             return ADCC;
+          } else if (event.link.includes("americangrapplingfederation")) {
+            return AGF;
           } else {
             return false;
           }
@@ -171,6 +174,8 @@ const Home: FC = () => {
             return GI;
           } else if (event.link.includes("naga")) {
             return NAGA;
+          } else if (event.link.includes("americangrapplingfederation")) {
+            return AGF;
           } else if (event.title.includes("ADCC")) {
             return false;
           } else {
@@ -185,6 +190,8 @@ const Home: FC = () => {
             return NAGA;
           } else if (event.title.includes("ADCC")) {
             return ADCC;
+          } else if (event.link.includes("americangrapplingfederation")) {
+            return AGF;
           } else {
             return GI;
           }
@@ -225,6 +232,8 @@ const Home: FC = () => {
                   ? { color1: "#330505", color2: "#121111" }
                   : event.title.includes("ADCC")
                   ? { color1: "#bf2828", color2: "#b87b7b" }
+                  : event.link.includes("americangrapplingfederation")
+                  ? { color1: "#e01b09", color2: "#0510ed" }
                   : { color1: "#f59b42", color2: "#dabe34" }
               }
             />
@@ -322,6 +331,7 @@ const Home: FC = () => {
             IBJJF={IBJJF}
             NAGA={NAGA}
             ADCC={ADCC}
+            AGF={AGF}
             setNoGi={setNoGi}
             setOnlyGi={setOnlyGi}
             setAJP={setAJP}
@@ -329,6 +339,7 @@ const Home: FC = () => {
             setIBJJF={setIBJJF}
             setNAGA={setNAGA}
             setADCC={setADCC}
+            setAGF={setAGF}
             isOpen={isOpen}
           />
         </Map>
