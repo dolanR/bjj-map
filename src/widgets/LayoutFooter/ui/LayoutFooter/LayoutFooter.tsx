@@ -16,7 +16,7 @@ const LayoutFooter: FC = () => {
             </a>
           </div>
           <p className="text-[11px] lg:text-base">
-            © {new Date().getFullYear.toString()} by Dolan Reynolds.
+            © {new Date().getFullYear().toString()} by Dolan Reynolds.
           </p>
           <p className="text-[11px] lg:text-base">All Rights Reserved.</p>
         </div>
