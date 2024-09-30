@@ -85,7 +85,7 @@ const MyEvents: FC = () => {
             <form method="dialog" className="flex gap-4">
               {/* if there is a button in form, it will close the modal */}
               <button
-                className="btn bg-red-800  text-neutral-300 hover:bg-red-500"
+                className="btn bg-red-800 text-neutral-300 hover:bg-red-500"
                 onClick={() => {
                   modalRef.current?.close();
                   clickHandler(selectedEvent as Event);

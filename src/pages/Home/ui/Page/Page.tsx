@@ -34,7 +34,7 @@ const Home: FC = () => {
   const [AJP, setAJP] = useState(true);
   const [GI, setGI] = useState(true);
   const [IBJJF, setIBJJF] = useState(true);
-  const [NAGA, setNAGA] = useState(true);
+  // const [NAGA, setNAGA] = useState(true);
   const [ADCC, setADCC] = useState(true);
   const [AGF, setAGF] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
