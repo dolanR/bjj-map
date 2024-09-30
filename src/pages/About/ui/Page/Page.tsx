@@ -59,6 +59,12 @@ const About: FC = () => {
               Update February 21st, 2024: More events!!! (American Grappling
               Federation)
             </p>
+            <p>
+              Update September 30th, 2024: NAGA decided to switch the map
+              iframes they use on their website so I had to remove them for the
+              time being, switch it back!!!!
+              {" >:("}
+            </p>
           </div>
         </div>
       </section>

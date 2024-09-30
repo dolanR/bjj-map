@@ -6,7 +6,7 @@ type LegendProps = {
   AJP: boolean;
   GI: boolean;
   IBJJF: boolean;
-  NAGA: boolean;
+  // NAGA: boolean;
   ADCC: boolean;
   AGF: boolean;
   setNoGi: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +14,7 @@ type LegendProps = {
   setAJP: React.Dispatch<React.SetStateAction<boolean>>;
   setGI: React.Dispatch<React.SetStateAction<boolean>>;
   setIBJJF: React.Dispatch<React.SetStateAction<boolean>>;
-  setNAGA: React.Dispatch<React.SetStateAction<boolean>>;
+  // setNAGA: React.Dispatch<React.SetStateAction<boolean>>;
   setADCC: React.Dispatch<React.SetStateAction<boolean>>;
   setAGF: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
@@ -26,7 +26,7 @@ const Legend = ({
   AJP,
   GI,
   IBJJF,
-  NAGA,
+  // NAGA,
   ADCC,
   AGF,
   setNoGi,
@@ -34,7 +34,7 @@ const Legend = ({
   setAJP,
   setGI,
   setIBJJF,
-  setNAGA,
+  // setNAGA,
   setADCC,
   setAGF,
   isOpen,
@@ -107,8 +107,8 @@ const Legend = ({
               onChange={() => setAJP(!AJP)}
             />
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <div className="flex h-4 w-4 items-center justify-center rounded-full bg-rose-950 md:h-6 md:w-6">
+          {/* <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center w-4 h-4 rounded-full bg-rose-950 md:h-6 md:w-6">
               <div className="h-1.5 w-1.5 rounded-full bg-neutral-800 md:h-2 md:w-2"></div>
             </div>
             <p className="text-[11px] font-semibold md:text-sm">NAGA</p>
@@ -117,7 +117,7 @@ const Legend = ({
               checked={NAGA}
               onChange={() => setNAGA(!NAGA)}
             />
-          </div>
+          </div> */}
           <div className="flex items-center justify-center gap-2">
             <div className="flex h-4 w-4 items-center justify-center rounded-full bg-red-600 md:h-6 md:w-6">
               <div className="h-1.5 w-1.5 rounded-full bg-blue-500 md:h-2 md:w-2"></div>
@@ -140,4 +140,4 @@ const Legend = ({
   );
 };
 
-export default React.memo(Legend);
+export default React.memo(Legend) as React.FC<LegendProps>;

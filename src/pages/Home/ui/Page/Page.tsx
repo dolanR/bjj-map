@@ -42,9 +42,6 @@ const Home: FC = () => {
   const [userSavedEvents, setUserSavedEvents] = useState<SavedEvent[]>([]);
   const { user } = useUser();
 
-  //console log user saved events
-  useEffect(() => {}, [userSavedEvents]);
-
   //function to make post request on click of star button
   function clickHandler(event: Event) {
     if (!user?.id) return;
@@ -153,9 +150,11 @@ const Home: FC = () => {
             return AJP;
           } else if (event.title.includes("GRAPPLING INDUSTRIES")) {
             return GI;
-          } else if (event.link.includes("naga")) {
-            return NAGA;
-          } else if (event.title.includes("ADCC")) {
+          }
+          // else if (event.link.includes("naga")) {
+          //   return NAGA;
+          // }
+          else if (event.title.includes("ADCC")) {
             return ADCC;
           } else if (event.link.includes("americangrapplingfederation")) {
             return AGF;
@@ -172,9 +171,11 @@ const Home: FC = () => {
             return AJP;
           } else if (event.title.includes("GRAPPLING INDUSTRIES")) {
             return GI;
-          } else if (event.link.includes("naga")) {
-            return NAGA;
-          } else if (event.link.includes("americangrapplingfederation")) {
+          }
+          // else if (event.link.includes("naga")) {
+          //   return NAGA;
+          // }
+          else if (event.link.includes("americangrapplingfederation")) {
             return AGF;
           } else if (event.title.includes("ADCC")) {
             return false;
@@ -186,9 +187,11 @@ const Home: FC = () => {
             return IBJJF;
           } else if (event.link.includes("ajp")) {
             return AJP;
-          } else if (event.link.includes("naga")) {
-            return NAGA;
-          } else if (event.title.includes("ADCC")) {
+          }
+          // else if (event.link.includes("naga")) {
+          //   return NAGA;
+          // }
+          else if (event.title.includes("ADCC")) {
             return ADCC;
           } else if (event.link.includes("americangrapplingfederation")) {
             return AGF;
@@ -198,7 +201,8 @@ const Home: FC = () => {
         }
       }),
     );
-  }, [AJP, GI, IBJJF, NAGA, ADCC, AGF, noGi, onlyGi, eventData]);
+    // add naga if their website decides to get better
+  }, [AJP, GI, IBJJF, ADCC, AGF, noGi, onlyGi, eventData]);
 
   const pins = useMemo(
     () =>
@@ -270,7 +274,7 @@ const Home: FC = () => {
               style={{ maxWidth: "300px" }}
             >
               <div className="flex flex-col items-center justify-center gap-2 p-2 text-center text-neutral-600">
-                <p className=" text-sm font-semibold">{popupInfo.title}</p>
+                <p className="text-sm font-semibold ">{popupInfo.title}</p>
                 <p>{popupInfo.location}</p>
                 <p>
                   {new Date(popupInfo.exactDate).toLocaleDateString(undefined, {
@@ -329,7 +333,7 @@ const Home: FC = () => {
             AJP={AJP}
             GI={GI}
             IBJJF={IBJJF}
-            NAGA={NAGA}
+            // NAGA={NAGA}
             ADCC={ADCC}
             AGF={AGF}
             setNoGi={setNoGi}
@@ -337,7 +341,7 @@ const Home: FC = () => {
             setAJP={setAJP}
             setGI={setGI}
             setIBJJF={setIBJJF}
-            setNAGA={setNAGA}
+            // setNAGA={setNAGA}
             setADCC={setADCC}
             setAGF={setAGF}
             isOpen={isOpen}
